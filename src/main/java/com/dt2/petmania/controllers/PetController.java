@@ -5,8 +5,8 @@ import com.dt2.petmania.repositories.PetRepository;
 
 import java.util.List;
 
-@RequestMaping
-@RestController("api/pets")
+@RequestMaping("api/pets")
+@RestController
 public class PetController {
 
     private final PetRepository repository;
@@ -14,14 +14,14 @@ public class PetController {
         this.repository = repository;
     }
 
-    @PostMapping
-    public List<Pet> mostrar(){
-        return repository.findById();
-    }
     @GetMapping
+    public List<Pet> mostrar(){
+        return repository.findAll();
+    }
+    @PostMapping
     public void criar(@RequestBody Pet p){
         repository.save(p);
     }
 
-    //CRIE O DELETE
+
 }
